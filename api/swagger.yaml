@@ -1,0 +1,15 @@
+basePath: /
+host: localhost:52603
+info:
+  contact:
+    email: fiber@swagger.io
+    name: API Support
+  description: Nuke Deployer System API
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  termsOfService: http://swagger.io/terms/
+  title: Nuke Deployer System API
+  version: 0.1.0
+paths: {}
+swagger: "2.0"

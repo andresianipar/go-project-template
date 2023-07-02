@@ -1,0 +1,48 @@
+version: "3.8"
+name: nuke-deployer-system
+services:
+  app:
+    depends_on:
+      - db
+    build:
+      context: .
+    container_name: app
+    hostname: app
+    networks:
+      - net
+    ports:
+      - 52603:52603
+    environment:
+      - APP_NAME=
+      - APP_VERSION=
+      - APP_PORT=
+      - DB_HOST=
+      - DB_USER=
+      - DB_PASSWORD=
+      - DB_NAME=
+      - DB_PORT=
+    deploy:
+      restart_policy:
+        condition: on-failure
+  db:
+    image: postgres:15.3-alpine
+    container_name: db
+    hostname: db
+    networks:
+      - net
+    ports:
+      - 5432:5432
+    environment:
+      - POSTGRES_USER=
+      - POSTGRES_PASSWORD=
+      - POSGTRES_DB=
+      - PGDATA=
+    volumes:
+      - db:/var/lib/postgresql/data
+
+volumes:
+  db:
+
+networks:
+  net:
+    driver: bridge
